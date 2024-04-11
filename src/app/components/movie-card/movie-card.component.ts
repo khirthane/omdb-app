@@ -37,7 +37,7 @@ import { MovieBadgeComponent } from '../movie-badge/movie-badge.component';
         <a
           [href]="generateUrl(movie.imdbID)"
           target="_blank"
-          class="inline-block"
+          class="movie-link inline-block"
         >
           <img src="./assets/images/imdb.svg" width="30" alt="IMDB Link" />
         </a>

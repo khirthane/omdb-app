@@ -93,16 +93,23 @@ describe('MovieCardComponent', () => {
   it('should display movie title with correct link', () => {
     component.movie = mockMovieWithPoster;
     fixture.detectChanges();
-    const titleLinkElement: DebugElement = fixture.debugElement.query(
-      By.css('.movie-title a')
-    );
+    const compiled = fixture.nativeElement;
+    const titleLinkElement = compiled.querySelector('.movie-link');
+
     expect(titleLinkElement).toBeTruthy();
-    expect(titleLinkElement.nativeElement.getAttribute('href')).toBe(
+    expect(titleLinkElement.getAttribute('href')).toBe(
       component.generateUrl(mockMovieWithPoster.imdbID)
     );
-    expect(titleLinkElement.nativeElement.textContent).toContain(
-      mockMovieWithPoster.Title
-    );
+  });
+
+  it('should display movie title', () => {
+    component.movie = mockMovieWithPoster;
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    const titleElement = compiled.querySelector('.movie-title');
+
+    expect(titleElement).toBeTruthy();
+    expect(titleElement.textContent).toContain(mockMovieWithPoster.Title);
   });
 
   it('should display movie type badge', () => {

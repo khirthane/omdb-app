@@ -35,7 +35,7 @@ describe('MovieBadgeComponent', () => {
   });
 
   it('should render with correct color for provided movieType', () => {
-    const testMovieType = 'movie'; // Assuming 'movie' is one of the keys in MovieBadgeColors
+    const testMovieType = 'movie';
     fixture.componentInstance.movieType = testMovieType;
     fixture.detectChanges();
 

@@ -52,7 +52,7 @@ describe('MovieResultsComponent', () => {
   });
 
   it('should initialize component with movie title', () => {
-    expect(component.movietitle).toEqual('test');
+    expect(component.movieTitle()).toEqual('test');
   });
 
   it('should fetch movies and populate movies array', () => {
@@ -62,7 +62,7 @@ describe('MovieResultsComponent', () => {
   });
 
   it('should navigate to movie details if movie title starts with "tt"', () => {
-    component.movietitle = 'tt1234567';
+    component.movieTitle.set('tt1234567');
     component.fetchMovies();
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/movie-details'], {
       queryParams: { id: 'tt1234567' },
@@ -73,13 +73,13 @@ describe('MovieResultsComponent', () => {
     spyOn(component, 'fetchMovies').and.returnValue(Promise.resolve());
     component.onSearch('new search');
     expect(component.fetchMovies).toHaveBeenCalled();
-    expect(component.movietitle).toEqual('new search');
+    expect(component.movieTitle()).toEqual('new search');
   });
 
   it('should call fetchMovies on search by year', () => {
     spyOn(component, 'fetchMovies').and.returnValue(Promise.resolve());
     component.onSearchByYear('2022');
     expect(component.fetchMovies).toHaveBeenCalled();
-    expect(component.movieYear).toEqual('2022');
+    expect(component.movieYear()).toEqual('2022');
   });
 });
