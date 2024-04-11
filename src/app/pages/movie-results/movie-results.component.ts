@@ -2,6 +2,7 @@ import { MovieCardComponent } from '@/components/movie-card/movie-card.component
 
 import { NavbarComponent } from '@/components/navbar/navbar.component';
 import { SearchBarComponent } from '@/components/search-bar/search-bar.component';
+import { GlobalErrorService } from '@/shared/services/global-error/global-error.service';
 import { MovieListService } from '@/shared/services/movie-list/movie-list.service';
 import {
   IMovie,
@@ -44,11 +45,18 @@ export class MovieResultsComponent implements OnInit {
   movieListService = inject(MovieListService);
   intl = inject(AppIntl);
 
+  globalErrorService = inject(GlobalErrorService);
+  globalError: string = '';
+
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.movieTitle.set(params['movie']);
 
       this.fetchMovies();
+    });
+
+    this.globalErrorService.getError().subscribe((err) => {
+      this.globalError = err;
     });
   }
 
@@ -100,7 +108,7 @@ export class MovieResultsComponent implements OnInit {
         this.movies = data.Search;
         this.handleGroupingByWorker(data.Search);
         if (data.Response === ResponseStatus.False && data.Error) {
-          this.error = data.Error;
+          console.log(data.Error);
         }
       });
   }

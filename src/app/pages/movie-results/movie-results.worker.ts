@@ -6,7 +6,7 @@ addEventListener('message', ({ data }) => {
   const movies: IMovie[] = data.movies;
   const groupedByYear: { [year: string]: IMovie[] } = {};
 
-  movies.forEach((movie) => {
+  movies?.forEach((movie) => {
     let year = movie.Year.substring(0, 4);
     if (!groupedByYear[year]) {
       groupedByYear[year] = [];

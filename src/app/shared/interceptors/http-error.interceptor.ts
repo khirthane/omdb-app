@@ -6,12 +6,14 @@ import {
   HttpRequest,
   HttpResponse,
 } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { GlobalErrorService } from '../services/global-error/global-error.service';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
+  globalErrorService = inject(GlobalErrorService);
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
@@ -20,7 +22,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
           if (event.ok && event.body.Response === ResponseStatus.False) {
-            console.error(event.body.Error);
+            this.globalErrorService.setError(event.body.Error);
+            console.error(event);
           }
         }
 

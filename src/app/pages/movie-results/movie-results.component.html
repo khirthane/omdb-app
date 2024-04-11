@@ -38,8 +38,8 @@
   </div>
 
   <!--Search Results Error-->
-  <div *ngIf="error" class="flex justify-center mt-72 align-middle">
-    {{ intl.noResults }}
+  <div *ngIf="globalError" class="flex justify-center mt-72 align-middle">
+    {{ globalError }}
   </div>
 
   <!--Search Results Grid without Grouping-->
