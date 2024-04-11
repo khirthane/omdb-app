@@ -40,7 +40,7 @@ describe('MovieBadgeComponent', () => {
     fixture.detectChanges();
 
     expect(getBadgeElement().classList.contains(MovieBadgeColors.movie)).toBe(
-      true
+      true,
     );
   });
 

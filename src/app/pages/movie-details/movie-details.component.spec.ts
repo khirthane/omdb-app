@@ -56,10 +56,10 @@ describe('MovieDetailsComponent', () => {
     expect(compiled.querySelector('app-loader')).toBeFalsy();
     expect(compiled.querySelector('.max-w-screen-xl')).toBeTruthy();
     expect(compiled.querySelector('.movie-title').textContent).toContain(
-      'Test Movie'
+      'Test Movie',
     );
     expect(compiled.querySelector('.movie-plot').textContent).toContain(
-      'Test Plot'
+      'Test Plot',
     );
   });
 
@@ -73,10 +73,10 @@ describe('MovieDetailsComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('.movie-title').textContent).toContain(
-      'Test Movie'
+      'Test Movie',
     );
     expect(compiled.querySelector('.movie-plot').textContent).toContain(
-      'Test Plot'
+      'Test Plot',
     );
   });
 });

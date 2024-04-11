@@ -66,7 +66,7 @@ describe('MovieCardComponent', () => {
     const imgElement: DebugElement = fixture.debugElement.query(By.css('img'));
     expect(imgElement).toBeTruthy();
     expect(imgElement.nativeElement.getAttribute('src')).toBe(
-      mockMovieWithPoster.Poster
+      mockMovieWithPoster.Poster,
     );
   });
 
@@ -74,7 +74,7 @@ describe('MovieCardComponent', () => {
     component.movie = mockMovieWithoutPoster;
     fixture.detectChanges();
     const placeholderElement: DebugElement = fixture.debugElement.query(
-      By.css('.bg-purple-400')
+      By.css('.bg-purple-400'),
     );
     expect(placeholderElement).toBeTruthy();
   });
@@ -86,7 +86,7 @@ describe('MovieCardComponent', () => {
     const imgElement: DebugElement = fixture.debugElement.query(By.css('img'));
     imgElement.triggerEventHandler('click', null);
     expect(component.openDetails).toHaveBeenCalledWith(
-      mockMovieWithPoster.imdbID
+      mockMovieWithPoster.imdbID,
     );
   });
 
@@ -98,7 +98,7 @@ describe('MovieCardComponent', () => {
 
     expect(titleLinkElement).toBeTruthy();
     expect(titleLinkElement.getAttribute('href')).toBe(
-      component.generateUrl(mockMovieWithPoster.imdbID)
+      component.generateUrl(mockMovieWithPoster.imdbID),
     );
   });
 
@@ -116,11 +116,11 @@ describe('MovieCardComponent', () => {
     component.movie = mockMovieWithPoster;
     fixture.detectChanges();
     const movieBadgeComponent: DebugElement = fixture.debugElement.query(
-      By.css('app-movie-badge')
+      By.css('app-movie-badge'),
     );
     expect(movieBadgeComponent).toBeTruthy();
     expect(movieBadgeComponent.componentInstance.movieType).toBe(
-      mockMovieWithPoster.Type
+      mockMovieWithPoster.Type,
     );
   });
 });

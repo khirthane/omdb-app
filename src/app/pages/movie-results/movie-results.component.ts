@@ -77,7 +77,7 @@ export class MovieResultsComponent implements OnInit {
   }
 
   async fetchMovies() {
-    this.error = '';
+    // this.globalError = '';
     const params: IMovieListParams = {
       title: this.movieTitle(),
       year: this.movieYear(),
@@ -102,7 +102,7 @@ export class MovieResultsComponent implements OnInit {
         catchError((error) => {
           this.error = error.message;
           return EMPTY;
-        })
+        }),
       )
       .subscribe((data) => {
         this.movies = data.Search;
@@ -116,7 +116,7 @@ export class MovieResultsComponent implements OnInit {
   handleGroupingByWorker(movies: IMovie[]) {
     if (typeof Worker !== 'undefined') {
       const worker = new Worker(
-        new URL('./movie-results.worker', import.meta.url)
+        new URL('./movie-results.worker', import.meta.url),
       );
       worker.postMessage({ movies });
       worker.onmessage = ({ data }) => {

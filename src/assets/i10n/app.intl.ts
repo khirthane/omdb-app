@@ -5,7 +5,7 @@ export class AppIntl {
   omdb = 'OMDB';
   searchMovies = 'Movie title or IMDB ID';
   year = 'Year';
-  type = 'Type';
+  type = 'All Type';
   movie = 'Movie';
   series = 'Series';
   episode = 'Episode';

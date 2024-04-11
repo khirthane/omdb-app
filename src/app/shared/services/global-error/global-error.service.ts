@@ -14,4 +14,8 @@ export class GlobalErrorService {
   getError() {
     return this.errorSubject.asObservable();
   }
+
+  clearError() {
+    this.errorSubject.next('');
+  }
 }
