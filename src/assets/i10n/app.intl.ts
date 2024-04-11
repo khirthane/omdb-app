@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 export class AppIntl {
   omdb = 'OMDB';
   searchMovies = 'Movie title or IMDB ID';
+  search = 'Search';
   year = 'Year';
   type = 'All Type';
   movie = 'Movie';

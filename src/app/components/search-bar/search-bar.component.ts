@@ -24,6 +24,15 @@ import { AppIntl } from 'src/assets/i10n/app.intl';
         placeholder="{{ placeholder }}"
         (change)="onChangeSeachText()"
       />
+
+      <button
+        *ngIf="searchSize === 'lg'"
+        (click)="onChangeSeachText()"
+        class="search-button"
+        [disabled]="!searchTerm"
+      >
+        {{ intl.search }}
+      </button>
     </div>
   `,
 })

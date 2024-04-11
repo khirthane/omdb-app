@@ -13,9 +13,7 @@ import { MovieBadgeComponent } from '../movie-badge/movie-badge.component';
   imports: [CommonModule, MovieBadgeComponent],
   host: { class: 'w-full sm:w-1/6' },
   template: `
-    <div
-      class="movie-card relative bg-white/40 rounded-lg shadow-lg duration-300 hover:scale-105"
-    >
+    <div class="movie-card relative bg-white/40 rounded-lg shadow-lg duration-300 hover:scale-105">
       <ng-container *ngIf="movie.Poster !== 'N/A'">
         <img
           class="rounded-t-lg h-full sm:h-60 w-full object-fill cursor-pointer"
@@ -34,11 +32,7 @@ import { MovieBadgeComponent } from '../movie-badge/movie-badge.component';
       </ng-container>
 
       <div class="mb-2 text-sm p-3">
-        <a
-          [href]="generateUrl(movie.imdbID)"
-          target="_blank"
-          class="movie-link inline-block"
-        >
+        <a [href]="generateUrl(movie.imdbID)" target="_blank" class="movie-link inline-block">
           <img src="./assets/images/imdb.svg" width="30" alt="IMDB Link" />
         </a>
         <div class="movie-title mb-2">
