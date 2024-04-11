@@ -19,11 +19,15 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      "@/*": ["./src/app/*"]
+    }
   },
+  "include": [
+    "src/**/*.ts",
+    "src/app/pages/movie-results/movie-results.worker.ts"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

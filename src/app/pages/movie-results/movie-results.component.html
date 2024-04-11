@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+
+<!--Search Bar with Filters-->
+<div class="max-w-screen-xl mx-auto p-5">
+  <div class="flex flex-col sm:flex-row">
+    <div class="w-full sm:w-80">
+      <app-search-bar
+        (searchEvent)="onSearch($event)"
+        [searchTerm]="movieTitle()"
+      ></app-search-bar>
+    </div>
+    <div class="filters ml-0 sm:ml-auto flex flex-col sm:flex-row">
+      <span class="flex items-center mt-2 sm:mt-0">
+        <input type="checkbox" [(ngModel)]="groupByYear" />
+        <label class="flex items-center ml-2 mr-4 h-12">
+          {{ intl.groupByYear }}
+        </label>
+      </span>
+      <span class="w-full sm:w-32 mt-4 mr-4 sm:mt-0">
+        <app-search-bar
+          (searchEvent)="onSearchByYear($event)"
+          [searchTerm]="movieYear()"
+          [placeholder]="intl.year"
+        ></app-search-bar>
+      </span>
+      <select
+        id="countries"
+        class="form-select pl-2 w-full sm:w-32 mt-4 sm:mt-0 h-12 shadow-sm"
+        [(ngModel)]="movieType"
+        (change)="fetchMovies()"
+      >
+        <option selected value="">{{ intl.type }}</option>
+        <ng-container *ngFor="let type of movieTypeList">
+          <option [value]="type">{{ type | titlecase }}</option>
+        </ng-container>
+      </select>
+    </div>
+  </div>
+
+  <!--Search Results Error-->
+  <div *ngIf="error" class="flex justify-center mt-72 align-middle">
+    {{ intl.noResults }}
+  </div>
+
+  <!--Search Results Grid without Grouping-->
+  <ng-container *ngIf="!error && !groupByYear">
+    <div class="flex flex-wrap justify-center gap-10 mt-10 mb-8">
+      <ng-container *ngFor="let movie of movies">
+        <app-movie-card [movie]="movie"></app-movie-card>
+      </ng-container>
+    </div>
+  </ng-container>
+
+  <!--Search Results Grid with Grouping-->
+  <ng-container *ngIf="!error && groupByYear">
+    <div class="mt-6 justify-center">
+      <ng-container *ngFor="let item of groupedMovies | keyvalue">
+        <div class="text-2xl font-bold text-center">{{ item.key }}</div>
+        <div class="flex flex-wrap justify-center gap-10 mt-2 mb-8">
+          <ng-container *ngFor="let movie of item.value">
+            <app-movie-card [movie]="movie"></app-movie-card>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
