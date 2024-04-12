@@ -11,7 +11,7 @@ import { MovieBadgeComponent } from '../movie-badge/movie-badge.component';
   selector: 'app-movie-card',
   standalone: true,
   imports: [CommonModule, MovieBadgeComponent],
-  host: { class: 'w-full sm:w-1/6' },
+  host: { class: 'w-full sm:w-1/3 md:w-1/4 lg:w-1/6' },
   template: `
     <div class="movie-card relative bg-white/40 rounded-lg shadow-lg duration-300 hover:scale-105">
       <ng-container *ngIf="movie.Poster !== 'N/A'">
