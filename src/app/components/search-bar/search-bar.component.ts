@@ -9,7 +9,7 @@ import { AppIntl } from 'src/assets/i10n/app.intl';
   imports: [CommonModule, FormsModule],
   template: `
     <div
-      class="relative flex items-center w-full rounded-lg focus-within:shadow-lg bg-white overflow-hidden shadow-sm"
+      class="relative search-box flex items-center w-full rounded-lg shadow-md focus-within:shadow-xl bg-white duration-500 overflow-hidden"
       [class]="searchSize === 'lg' ? 'h-16' : 'h-12'"
     >
       <div class="grid place-items-center h-full w-12 text-grey pl-2">
