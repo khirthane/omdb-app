@@ -1,3 +1,4 @@
+import { BackButtonComponent } from '@/components/back-button/back-button.component';
 import { LoaderComponent } from '@/components/loader/loader.component';
 import { MovieCardComponent } from '@/components/movie-card/movie-card.component';
 import { NavbarComponent } from '@/components/navbar/navbar.component';
@@ -11,7 +12,13 @@ import { AppIntl } from 'src/assets/i10n/app.intl';
 @Component({
   selector: 'app-movie-details',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, MovieCardComponent, LoaderComponent],
+  imports: [
+    CommonModule,
+    NavbarComponent,
+    MovieCardComponent,
+    LoaderComponent,
+    BackButtonComponent,
+  ],
   templateUrl: './movie-details.component.html',
 })
 export class MovieDetailsComponent implements OnInit {
