@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppIntl } from 'src/assets/i10n/app.intl';
 
@@ -37,12 +37,12 @@ import { AppIntl } from 'src/assets/i10n/app.intl';
   `,
 })
 export class SearchBarComponent {
-  intl = inject(AppIntl);
-
   @Output() searchEvent = new EventEmitter<string>();
   @Input() searchTerm: string = '';
   @Input() placeholder: string = this.intl.searchMovies;
   @Input() searchSize: 'lg' | 'md' = 'md';
+
+  constructor(public intl: AppIntl) {}
 
   onChangeSeachText(): void {
     this.searchEvent.emit(this.searchTerm);

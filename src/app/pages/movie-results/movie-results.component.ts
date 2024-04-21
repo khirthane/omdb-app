@@ -7,7 +7,7 @@ import { MovieListService } from '@/shared/services/movie-list/movie-list.servic
 import { updateUrlParams } from '@/shared/utils/updateUrlParams';
 import { IMovie, IMovieListParams, MovieType, ResponseStatus } from '@/types/movie';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EMPTY, catchError } from 'rxjs';
@@ -28,15 +28,15 @@ export class MovieResultsComponent implements OnInit {
   movieTypeList = Object.values(MovieType);
   groupedMovies: { [year: string]: IMovie[] } = {};
   groupByYear: boolean = true;
-
-  route = inject(ActivatedRoute);
-  router = inject(Router);
-
-  movieListService = inject(MovieListService);
-  intl = inject(AppIntl);
-
-  globalErrorService = inject(GlobalErrorService);
   globalError: string = '';
+
+  constructor(
+    public intl: AppIntl,
+    private route: ActivatedRoute,
+    private router: Router,
+    private movieListService: MovieListService,
+    private globalErrorService: GlobalErrorService,
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(({ movie, year, type = '', grouped = 'true' }) => {

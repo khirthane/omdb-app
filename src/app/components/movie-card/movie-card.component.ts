@@ -2,7 +2,7 @@ import { IMDB_URL } from '@/constants/urls';
 import { IMovie } from '@/types/movie';
 import { IMovieDetails } from '@/types/movieDetail';
 import { CommonModule } from '@angular/common';
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppIntl } from 'src/assets/i10n/app.intl';
 import { MovieBadgeComponent } from '../movie-badge/movie-badge.component';
@@ -47,9 +47,11 @@ import { MovieBadgeComponent } from '../movie-badge/movie-badge.component';
 })
 export class MovieCardComponent {
   @Input() movie!: IMovie | IMovieDetails;
-  intl = inject(AppIntl);
 
-  router = inject(Router);
+  constructor(
+    public intl: AppIntl,
+    private router: Router,
+  ) {}
 
   generateUrl(id: string): string {
     return `${IMDB_URL}title/${id}`;

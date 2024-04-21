@@ -5,7 +5,7 @@ import { NavbarComponent } from '@/components/navbar/navbar.component';
 import { MovieListService } from '@/shared/services/movie-list/movie-list.service';
 import { IMovieDetails } from '@/types/movieDetail';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppIntl } from 'src/assets/i10n/app.intl';
 
@@ -24,9 +24,12 @@ import { AppIntl } from 'src/assets/i10n/app.intl';
 export class MovieDetailsComponent implements OnInit {
   movieId: string = '';
   movie!: IMovieDetails;
-  route = inject(ActivatedRoute);
-  intl = inject(AppIntl);
-  movieListService = inject(MovieListService);
+
+  constructor(
+    public intl: AppIntl,
+    private route: ActivatedRoute,
+    private movieListService: MovieListService,
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {

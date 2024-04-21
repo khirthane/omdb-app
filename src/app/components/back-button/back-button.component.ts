@@ -1,5 +1,5 @@
 import { CommonModule, Location } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-back-button',
@@ -12,7 +12,7 @@ import { Component, inject } from '@angular/core';
   `,
 })
 export class BackButtonComponent {
-  location = inject(Location);
+  constructor(private location: Location) {}
 
   goBack(): void {
     this.location.back();

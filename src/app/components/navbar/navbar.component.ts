@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppIntl } from 'src/assets/i10n/app.intl';
 
@@ -18,8 +18,10 @@ import { AppIntl } from 'src/assets/i10n/app.intl';
   `,
 })
 export class NavbarComponent {
-  intl = inject(AppIntl);
-  router = inject(Router);
+  constructor(
+    public intl: AppIntl,
+    private router: Router,
+  ) {}
 
   goToHomePage() {
     this.router.navigate(['/']);
