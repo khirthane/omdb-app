@@ -2,7 +2,7 @@ import { IMDB_URL } from '@/constants/urls';
 import { IMovie } from '@/types/movie';
 import { IMovieDetails } from '@/types/movieDetail';
 import { CommonModule } from '@angular/common';
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppIntl } from 'src/assets/i10n/app.intl';
 import { MovieBadgeComponent } from '../movie-badge/movie-badge.component';
@@ -13,7 +13,9 @@ import { MovieBadgeComponent } from '../movie-badge/movie-badge.component';
   imports: [CommonModule, MovieBadgeComponent],
   host: { class: 'w-full sm:w-1/3 md:w-1/4 lg:w-1/6' },
   template: `
-    <div class="movie-card relative bg-white/40 rounded-lg shadow-lg duration-300 hover:scale-105">
+    <div
+      class="movie-card relative bg-white/40 rounded-lg shadow-lg duration-300 hover:scale-105 hover:bg-white  hover:shadow-xl"
+    >
       <ng-container *ngIf="movie.Poster !== 'N/A'">
         <img
           class="rounded-t-lg h-full sm:h-60 w-full object-fill cursor-pointer"
@@ -45,9 +47,11 @@ import { MovieBadgeComponent } from '../movie-badge/movie-badge.component';
 })
 export class MovieCardComponent {
   @Input() movie!: IMovie | IMovieDetails;
-  intl = inject(AppIntl);
 
-  router = inject(Router);
+  constructor(
+    public intl: AppIntl,
+    private router: Router,
+  ) {}
 
   generateUrl(id: string): string {
     return `${IMDB_URL}title/${id}`;

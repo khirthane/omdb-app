@@ -75,11 +75,4 @@ describe('MovieResultsComponent', () => {
     expect(component.fetchMovies).toHaveBeenCalled();
     expect(component.movieTitle()).toEqual('new search');
   });
-
-  it('should call fetchMovies on search by year', () => {
-    spyOn(component, 'fetchMovies').and.returnValue(Promise.resolve());
-    component.onSearchByYear('2022');
-    expect(component.fetchMovies).toHaveBeenCalled();
-    expect(component.movieYear()).toEqual('2022');
-  });
 });

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppIntl } from 'src/assets/i10n/app.intl';
 
@@ -9,7 +9,7 @@ import { AppIntl } from 'src/assets/i10n/app.intl';
   imports: [CommonModule, FormsModule],
   template: `
     <div
-      class="relative flex items-center w-full rounded-lg focus-within:shadow-lg bg-white overflow-hidden shadow-sm"
+      class="relative search-box flex items-center w-full rounded-lg shadow-md focus-within:shadow-xl bg-white duration-500 overflow-hidden"
       [class]="searchSize === 'lg' ? 'h-16' : 'h-12'"
     >
       <div class="grid place-items-center h-full w-12 text-grey pl-2">
@@ -37,12 +37,12 @@ import { AppIntl } from 'src/assets/i10n/app.intl';
   `,
 })
 export class SearchBarComponent {
-  intl = inject(AppIntl);
-
   @Output() searchEvent = new EventEmitter<string>();
   @Input() searchTerm: string = '';
   @Input() placeholder: string = this.intl.searchMovies;
   @Input() searchSize: 'lg' | 'md' = 'md';
+
+  constructor(public intl: AppIntl) {}
 
   onChangeSeachText(): void {
     this.searchEvent.emit(this.searchTerm);

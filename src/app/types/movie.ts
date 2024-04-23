@@ -21,6 +21,7 @@ export enum ResponseStatus {
 export enum MovieType {
   Movie = 'movie',
   Series = 'series',
+  Game = 'game',
   Episode = 'episode',
 }
 
